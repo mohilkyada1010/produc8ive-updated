@@ -1,14 +1,20 @@
 {
+  "homepage": "https://mohilkyada1010.github.io/produc8ive-updated",
   "scripts": {
     "dev": "vite",
     "cms": "npm --prefix cms run develop",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "latest",
     "react-dom": "latest",
     "three": "^0.185.1",
     "vite": "latest"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
