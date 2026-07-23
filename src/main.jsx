@@ -2,6 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import FloatingLines from './FloatingLines'
 import dashboardImage from '../DIY dashboard.PNG'
+import logo from '../public/logo.png'
+import placeholder from '../public/agent-workspace-placeholder.svg'
+import ameyaImage from '../public/ameya.jpg'
+import sauravImage from '../public/Saurav.jpg'
+import sawanImage from '../public/sawan.jpg'
+import akashImage from '../public/akash.jpg'
+import sumaLogo from '../public/Suma-Logo-BlackText (1).svg'
+import serumLogo from '../public/serum-logo.png'
+import kaleLogo from '../public/Kale-New-Logofo.png'
+import globeviewLogo from '../public/globalview.png'
 import './styles.css'
 
 const routes = [
@@ -97,7 +107,7 @@ function HomeHero() {
         <p className="home-intro">{hero.description}</p>
         <div className="home-actions"><Link to={hero.primaryCtaUrl} className="button primary">{hero.primaryCtaLabel} <b aria-hidden="true">↗</b></Link><a href={hero.secondaryCtaUrl} className="button secondary">{hero.secondaryCtaLabel}</a></div>
         <div className="product-stage" id="agents">
-          <img className="workspace-placeholder" src="/agent-workspace-placeholder.svg" alt="Placeholder for the Produc8ive agent workspace preview" />
+          <img className="workspace-placeholder" src={placeholder} alt="Placeholder for the Produc8ive agent workspace preview" />
         </div>
       </section>
       <section className="domain-strip" id="how" aria-label="Produc8ive capabilities"><p>{hero.domainHeading}</p><div>{hero.domains.map(domain => <span key={domain}>{domain}</span>)}</div></section>
@@ -107,9 +117,9 @@ function HomeHero() {
 
 function Logo() {
   return <><PageHead eyebrow="Identity / 02" title="A mark for work in motion." intro="The current horizontal lockup is the only approved logo. Preserve its proportions, contrast, and generous breathing room." />
-    <section className="logo-stage"><img src="/logo.png" alt="Produc8ive logo" /></section>
-    <section className="split section"><div><p className="eyebrow">Proposed clear space</p><h2>Let the mark breathe.</h2><p>Maintain clear space equal to the height of the “P” around every side. Until a vector master exists, this rule remains proposed.</p></div><div className="clearspace"><div><img src="/logo.png" alt="Logo clear-space example" /></div></div></section>
-    <section className="section"><div className="section-title"><p className="eyebrow">Approved use</p><h2>High contrast,<br />without compromise.</h2></div><div className="logo-pair"><article><img src="/logo.png" alt="Logo on ivory" /><p>Preferred · Ivory</p></article><article className="dark-logo"><div className="logo-reverse">PRODUC8IVE</div><p>Proposed · Reversed typeset preview only</p></article></div><p className="note">The reversed treatment is a placement preview, not an exportable logo asset. Create an approved SVG before production use.</p></section>
+    <section className="logo-stage"><img src={logo} alt="Produc8ive logo" /></section>
+    <section className="split section"><div><p className="eyebrow">Proposed clear space</p><h2>Let the mark breathe.</h2><p>Maintain clear space equal to the height of the “P” around every side. Until a vector master exists, this rule remains proposed.</p></div><div className="clearspace"><div><img src={logo} alt="Logo clear-space example" /></div></div></section>
+    <section className="section"><div className="section-title"><p className="eyebrow">Approved use</p><h2>High contrast,<br />without compromise.</h2></div><div className="logo-pair"><article><img src={logo} alt="Logo on ivory" /><p>Preferred · Ivory</p></article><article className="dark-logo"><div className="logo-reverse">PRODUC8IVE</div><p>Proposed · Reversed typeset preview only</p></article></div><p className="note">The reversed treatment is a placement preview, not an exportable logo asset. Create an approved SVG before production use.</p></section>
     <section className="section"><p className="eyebrow">Do not</p><div className="dont-grid"><p>Stretch or compress</p><p>Recolor individual parts</p><p>Place on busy imagery</p><p>Add glow or shadow</p></div></section>
   </>
 }
@@ -854,28 +864,28 @@ function LeadershipSection() {
     {
       name: 'Ameya Kunte',
       role: 'Co-founder & Experienced Finance Professional',
-      img: '/ameya.jpg',
+      img: ameyaImage,
       bio: 'Ameya Kunte is a Chartered Accountant, tax expert, and entrepreneur with over two decades of experience in restructuring advisory, corporate tax, and M&A. He is the Founder of Globeview Advisors LLP, a boutique consulting firm delivering tax-centric business advisory services to leading businesses and promoters. Previously with Ernst & Young and PwC, Ameya also co-founded Taxsutra, India\'s premier B2B tax news platform.',
       linkedin: '#'
     },
     {
       name: 'Saurav Mishra',
       role: 'Co-Founder & AI Advocate',
-      img: '/Saurav.jpg',
+      img: sauravImage,
       bio: 'Saurav is a growth strategist and entrepreneur who enables T-Shaped Growth for businesses by combining deep expertise in marketing and sales with a broad understanding of HR, finance, operations, and supply chains. He helps organizations deploy AI-driven automation and scalable growth playbooks. Previously, he founded and scaled a 300+ member technology company, later acquired by a New York private equity firm.',
       linkedin: '#'
     },
     {
       name: 'Sawan Jain',
       role: 'Co-Founder & Tech Arch',
-      img: '/sawan.jpg',
+      img: sawanImage,
       bio: 'Sawan is the Co-founder of Varseno with over 20 years of experience in enterprise software strategy, design, and delivery. He is passionate about solving complex problems through innovative and scalable technology solutions. Known for his pragmatic leadership style, Sawan brings together strategy, creativity, and execution to build high-performing teams and deliver meaningful business impact.',
       linkedin: '#'
     },
     {
       name: 'Akash Hande',
       role: 'Co-Founder & Product',
-      img: '/akash.jpg',
+      img: akashImage,
       bio: 'Akash Hande is the Co-founder and Product Manager at Produc8ive, where he drives the vision and execution of AI-powered products. With a strong focus on blending technology, automation, and business strategy, Akash specializes in building scalable solutions for finance, e-commerce, and sport domain. He thrives on turning complex workflows into simple, outcome-driven products.',
       linkedin: '#'
     }
@@ -921,10 +931,10 @@ function LeadershipSection() {
 
 function TrustedBySection() {
   const logos = [
-    { name: 'Suma', src: '/Suma-Logo-BlackText (1).svg' },
-    { name: 'Serum', src: '/serum-logo.png' },
-    { name: 'Kale', src: '/Kale-New-Logofo.png' },
-    { name: 'Globeview', src: '/globalview.png' }
+    { name: 'Suma', src: sumaLogo },
+    { name: 'Serum', src: serumLogo },
+    { name: 'Kale', src: kaleLogo },
+    { name: 'Globeview', src: globeviewLogo }
   ]
   return <section className="trusted-by" id="trusted-by">
     <div className="trusted-by-header">
@@ -1032,8 +1042,8 @@ const pages = {'/brand': Overview, '/logo': Logo, '/colors': Colors, '/typograph
 function App() {
   const [path, setPath] = useState(location.pathname)
   useEffect(() => { const update = () => setPath(location.pathname); addEventListener('popstate', update); return () => removeEventListener('popstate', update) }, [])
-  if (path === '/') return <HomeHero />
-  if (path === '/landing%20page%201' || path === '/landing page 1') return <LandingPageOne />
+ if (path === "/") return <HomeHero />;
+if (path === "/landing-page-1") return <LandingPageOne />;
   const Page = pages[path] || Overview
   return <Shell path={pages[path] ? path : '/brand'}><Page /></Shell>
 }
