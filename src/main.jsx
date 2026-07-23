@@ -212,9 +212,9 @@ function LandingPageOne() {
     <main>
       <section className="tabbed-hero landing-hero-redesign" id="platform">
         <div className="hero-lines" aria-hidden="true"><FloatingLines lineCount={18} lineDistance={16} animationSpeed={.28} middleWavePosition={{x: 1.4, y: -.15, rotate: .24}} linesGradient={['#69766d', '#b98b38']} /></div>
-        <h1>Turn Your Finance Knowledge<br /><em>Into Work That Gets Done</em></h1>
-        <p className="landing-lead">Produc8ive turns your SOPs, institutional knowledge and live enterprise data into governed AI agents that complete repeatable finance workflows across your existing systems.</p>
-        <div className="landing-actions"><a className="button primary" href="#contact">Map One Finance Workflow ↗</a></div>
+        <h1>AI Workflows That Eliminate<br /><em>Repetitive Finance Operations</em></h1>
+        <p className="landing-lead">Automate invoice processing, reconciliations, approvals, compliance, and audit workflows. Reduce manual effort, eliminate bottlenecks, strengthen financial controls, and accelerate month-end close—all without replacing your ERP.</p>
+        <div className="landing-actions"><a className="button primary" href="#contact">Map One Finance Workflow ↗</a><span className="landing-cta-note">Start with one workflow. No migration.</span></div>
         <div className="hero-dashboard-frame"><img src={dashboardImage} alt="Produc8ive finance automation dashboard" /></div>
       </section>
       <section className="growth-strip" id="proof" aria-label="Growth and efficiency outcomes"><div>
@@ -229,153 +229,761 @@ function LandingPageOne() {
       <UseCasesSection />
       <FinanceBrainFlowSection />
       <ImplementationJourneySection />
+      <WorkflowDemoSection />
+      <IntegrationsSection />
+      <HonestScopeSection />
+      <LeadershipSection />
+      <TrustedBySection />
+      <FinalCtaSection />
+      <FaqSection />
       <ContactSection />
     </main>
   </div>
 }
 
 function ProblemSection() {
-  const problems = [
-    ['Systems Create Silos', 'Finance teams manually connect fragmented data, documents and approvals across tools before any process can be completed.'],
-    ['Assembling the Truth', 'Finance teams must pull data, approvals, documents and business context from multiple systems before they can make a confident decision.'],
-    ['People Bridge Systems', 'Experienced employees manually connect tools, chase inputs and resolve exceptions—making growth dependent on headcount and institutional knowledge.'],
-    ['Automation Breaks on Exceptions', 'The moment a transaction requires context or judgement, the process falls back to emails, spreadsheets and manual follow-ups.']
+  const manualItems = [
+    'High Manual Data Entry',
+    'Delayed Approvals',
+    'Compliance & Audit Risk',
+    'Month-end Close Delays',
+    'Limited Visibility',
+    'Reactive Decision Making'
+  ]
+  const produc8iveItems = [
+    'Automated Data Capture',
+    'Intelligent Workflow Automation',
+    'Built-in Controls & Audit Trail',
+    'Accelerated Financial Close',
+    'AI-Powered Dashboards',
+    'Actionable AI Insights'
+  ]
+  const flowCards = [
+    ['01', 'Fragmented Finance Inputs', 'Finance data comes from invoices, emails, spreadsheets, ERP exports, and documents, making intake fragmented and inefficient.'],
+    ['02', 'Manual Operational Work', 'Teams spend excessive time on repetitive data entry, validation, approvals, and reconciliation instead of strategic finance work.'],
+    ['03', 'Delayed Financial Close', 'Manual processes and disconnected systems delay month-end close, reporting, and financial decision-making.']
   ]
   return <section className="problem-section" id="problems">
-    <header><p className="problem-label"><span aria-hidden="true">△</span>The Problem</p><h2>Finance has more software than ever, but the work between systems is still manual.</h2></header>
-    <div className="problem-grid">{problems.map(([title, description], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
-    <div className="problem-story problem-single" aria-hidden="true">
-      <div className="single-problem-flow">
-        <section className="single-systems"><small>DISCONNECTED INPUTS</small><div><span><i>ERP</i><b>Transactions</b><em>£12,480</em></span><span><i>@</i><b>Email</b><em>Approval pending</em></span><span><i>▤</i><b>Documents</b><em>Invoice v3</em></span><span><i>£</i><b>Banking</b><em>£12,420</em></span></div></section>
-        <div className="single-connector"><i></i><b>→</b></div>
-        <section className="single-human"><small>HUMAN RECONCILIATION</small><strong>Finance assembles the truth</strong><span>Invoice total <b>£12,480</b></span><span>Bank amount <b>£12,420</b></span><span>Email adjustment <b>+ £60</b></span><em>Matched manually</em></section>
-        <div className="single-connector broken"><i></i><b>×</b><small>Exception</small></div>
-        <section className="single-outcome"><small>AUTOMATION FALLBACK</small><div className="exception-callout"><i>!</i><span><b>Amount mismatch</b><em>Rule cannot resolve</em></span></div><div className="conflicting-truth"><span>ERP <b>£12,480</b></span><span>Bank <b>£12,420</b></span></div><strong>Decision blocked<small>No stitched source of truth</small></strong></section>
-      </div>
+    <header>
+      <p className="eyebrow light">The Problem</p>
+      <h2>Manual Finance Processes Are Slowing Down Your Business.</h2>
+      <p>Disconnected systems and manual finance processes create bottlenecks, increase reconciliation effort and compliance risk, delay financial close, and drive up operating costs as transaction volumes grow.</p>
+    </header>
+
+    {/* Two-column comparison */}
+    <div className="problem-comparison">
+      <article className="problem-compare-card problem-compare-manual">
+        <header className="compare-card-head">
+          <h3>Manual Finance Today</h3>
+          <span className="compare-tag compare-tag-bad">Expensive · Slow · Risky</span>
+        </header>
+        <ul>{manualItems.map(item => <li key={item}><span className="compare-icon compare-icon-bad" aria-hidden="true">✕</span>{item}</li>)}</ul>
+      </article>
+      <article className="problem-compare-card problem-compare-produc8ive">
+        <header className="compare-card-head">
+          <h3>Finance with Produc8ive</h3>
+          <span className="compare-tag compare-tag-good">Automated · Controlled · Accelerated</span>
+        </header>
+        <ul>{produc8iveItems.map(item => <li key={item}><span className="compare-icon compare-icon-good" aria-hidden="true">✓</span>{item}</li>)}</ul>
+      </article>
+    </div>
+
+    {/* Three horizontal flow cards */}
+    <div className="problem-flow-cards">
+      {flowCards.map(([num, title, desc]) => (
+        <article className="problem-flow-card" key={num}>
+          <span className="problem-flow-num" aria-hidden="true">{num}</span>
+          <h3>{title}</h3>
+          <p>{desc}</p>
+        </article>
+      ))}
+    </div>
+
+    {/* Closing statement */}
+    <div className="problem-closing">
+      <blockquote>"That is not expert finance work. That is operational drag."</blockquote>
     </div>
   </section>
 }
 
 function FinanceShiftSection() {
-  const shifts = [
-    ['ready', 'Work arrives review-ready', 'Information is collected, organised and validated before it reaches the finance team.'],
-    ['exceptions', 'Exceptions replace transaction queues', 'Teams focus on mismatches, risks and material decisions instead of reviewing every item manually.'],
-    ['control', 'People remain in control', 'AI coordinates routine work while finance professionals approve consequential actions and resolve exceptions.']
+  const capabilities = [
+    'Capture finance data automatically',
+    'Identify exceptions before review',
+    'Coordinate approvals and follow-ups',
+    'Validate documents and transactions',
+    'Prepare review-ready workpapers',
+    'Maintain complete audit visibility'
   ]
-  const icons = {
-    ready: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l2 2 4-4M7 3h8l4 4v14H5V3h2zm7 1v4h4" /></svg>,
-    exceptions: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7M18 15v6m-3-3h6" /></svg>,
-    control: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4zm-3 9l2 2 4-4" /></svg>
-  }
   return <section className="finance-shift" id="finance-shift">
     <div className="finance-shift-copy">
-      <p className="eyebrow">The Produc8ive shift</p>
-      <h2>Finance Should Focus on Decisions, Not Data Preparation</h2>
-      <div className="shift-points">{shifts.map(([icon, title, description]) => <article key={title}><span className="shift-icon">{icons[icon]}</span><div><h3>{title}</h3><p>{description}</p></div></article>)}</div>
+      <p className="eyebrow">The Shift</p>
+      <h2>Finance Should Focus on Decisions, Not Data Preparation.</h2>
+      <p className="shift-subhead">The Modern Finance Team Needs a System That Can —</p>
+      <ul className="shift-list">
+        {capabilities.map((item, i) => (
+          <li key={item} className="shift-list-item" style={{'--delay': `${i * 0.08}s`}}>
+            <span className="shift-list-icon" aria-hidden="true">→</span>
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
-    <div className="shift-visual" aria-label="Produc8ive prepares finance work and escalates only material exceptions">
-      <header><span>Finance workflow</span><b><i></i> Coordinated</b></header>
-      <div className="workflow-summary"><small>WORK PREPARED</small><strong>Review-ready</strong><span>Sources organised and validated</span></div>
-      <div className="workflow-path" aria-hidden="true"><span>Collect</span><i>→</i><span>Validate</span><i>→</i><span>Review</span></div>
-      <div className="exception-card"><span><small>EXCEPTION</small><strong>Invoice total mismatch</strong></span><b>Needs judgment</b></div>
-      <footer><span>Routine items cleared <b>47</b></span><span>For review <b>03</b></span></footer>
+    <div className="shift-visual" aria-label="Produc8ive coordinates finance work and surfaces only material exceptions">
+      <header><span><i></i>Finance workflow</span><b>Coordinated</b></header>
+      <div className="workflow-summary">
+        <small>SYSTEM CAPABILITY</small>
+        <strong>Decisions,<br />not prep.</strong>
+        <span>Agents handle routine work. Your team handles what matters.</span>
+      </div>
+      <div className="workflow-path" aria-hidden="true"><span>Capture</span><i>→</i><span>Validate</span><i>→</i><span>Deliver</span></div>
+      <div className="exception-card">
+        <span><small>EXCEPTION SURFACED</small><strong>Approval threshold exceeded</strong></span>
+        <b>Needs judgment</b>
+      </div>
+      <footer>
+        <span>Routine items cleared <b>52</b></span>
+        <span>For review <b>02</b></span>
+      </footer>
     </div>
   </section>
 }
 
 function WhyProduc8iveSection() {
   const reasons = [
-    ['brain', 'One Finance Brain', 'Bring together SOPs, business rules, institutional knowledge and live enterprise data so every agent works with the same organizational context.'],
-    ['agents', 'Agents That Work Together', 'Specialised agents coordinate across multi-step finance workflows instead of handling isolated prompts or disconnected tasks.'],
-    ['control', 'Human Control by Design', 'AI prepares, validates and recommends. Your team reviews exceptions, approves material actions and remains accountable for final decisions.'],
-    ['process', 'Built Around Your Process', 'Configure workflows around your existing controls, approval structures and operating procedures rather than forcing finance into a standard template.'],
-    ['stack', 'Works Across Your Stack', 'Connect ERPs, email, documents, banking portals and specialist systems without replacing the technology your team already uses.']
+    {
+      type: 'multi-agent',
+      title: 'Multi-Agent Architecture',
+      description: 'Specialised AI agents working together across your finance workflows.',
+      icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 12h5l5-5M12 12l5 5"/></svg>,
+      visual: <div className="why-visual-multi" aria-hidden="true">
+        <svg className="wv-multi-svg" viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Connection lines */}
+          <line x1="150" y1="90" x2="32" y2="32" stroke="var(--border-strong)" strokeWidth="1" strokeDasharray="4 4"/>
+          <line x1="150" y1="90" x2="32" y2="148" stroke="var(--border-strong)" strokeWidth="1" strokeDasharray="4 4"/>
+          <line x1="150" y1="90" x2="268" y2="32" stroke="var(--border-strong)" strokeWidth="1" strokeDasharray="4 4"/>
+          <line x1="150" y1="90" x2="268" y2="148" stroke="var(--border-strong)" strokeWidth="1" strokeDasharray="4 4"/>
+          {/* Traveling dots — one per line, staggered */}
+          <circle className="wv-dot wv-dot-1" r="3.5" fill="var(--sage-500)"><animateMotion dur="2s" repeatCount="indefinite" begin="0s"><mpath href="#path-tl"/></animateMotion></circle>
+          <circle className="wv-dot wv-dot-2" r="3.5" fill="var(--signal-500)"><animateMotion dur="2s" repeatCount="indefinite" begin="0.5s"><mpath href="#path-bl"/></animateMotion></circle>
+          <circle className="wv-dot wv-dot-3" r="3.5" fill="var(--sage-500)"><animateMotion dur="2s" repeatCount="indefinite" begin="1s"><mpath href="#path-tr"/></animateMotion></circle>
+          <circle className="wv-dot wv-dot-4" r="3.5" fill="var(--signal-500)"><animateMotion dur="2s" repeatCount="indefinite" begin="1.5s"><mpath href="#path-br"/></animateMotion></circle>
+          {/* Motion paths */}
+          <defs>
+            <path id="path-tl" d="M150,90 L32,32"/>
+            <path id="path-bl" d="M150,90 L32,148"/>
+            <path id="path-tr" d="M150,90 L268,32"/>
+            <path id="path-br" d="M150,90 L268,148"/>
+          </defs>
+          {/* Satellite nodes */}
+          <rect x="8" y="10" width="48" height="44" rx="2" fill="var(--paper-100)" stroke="var(--border-subtle)" strokeWidth="1"/>
+          <text x="32" y="37" textAnchor="middle" fontSize="9" fontWeight="700" fontFamily="Inter,sans-serif" fill="var(--text-secondary)" letterSpacing="0.08em">AP</text>
+          <rect x="8" y="126" width="48" height="44" rx="2" fill="var(--paper-100)" stroke="var(--border-subtle)" strokeWidth="1"/>
+          <text x="32" y="153" textAnchor="middle" fontSize="9" fontWeight="700" fontFamily="Inter,sans-serif" fill="var(--text-secondary)" letterSpacing="0.08em">AR</text>
+          <rect x="244" y="10" width="48" height="44" rx="2" fill="var(--paper-100)" stroke="var(--border-subtle)" strokeWidth="1"/>
+          <text x="268" y="37" textAnchor="middle" fontSize="9" fontWeight="700" fontFamily="Inter,sans-serif" fill="var(--text-secondary)" letterSpacing="0.08em">TAX</text>
+          <rect x="244" y="126" width="48" height="44" rx="2" fill="var(--paper-100)" stroke="var(--border-subtle)" strokeWidth="1"/>
+          <text x="268" y="153" textAnchor="middle" fontSize="9" fontWeight="700" fontFamily="Inter,sans-serif" fill="var(--text-secondary)" letterSpacing="0.08em">CLOSE</text>
+          {/* Center node */}
+          <rect x="122" y="62" width="56" height="56" rx="2" fill="var(--ink-900)"/>
+          <text x="150" y="95" textAnchor="middle" fontSize="12" fontWeight="600" fontFamily="Inter,sans-serif" fill="var(--paper-100)" letterSpacing="0.04em">P8</text>
+          {/* Center pulse ring */}
+          <circle cx="150" cy="90" r="34" stroke="var(--sage-500)" strokeWidth="1" strokeOpacity="0.4" fill="none">
+            <animate attributeName="r" values="34;44;34" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+    },
+    {
+      type: 'human-loop',
+      title: 'Human-in-the-Loop',
+      description: 'AI prepares and recommends. Your team reviews and approves.',
+      icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>,
+      visual: <div className="why-visual-loop" aria-hidden="true">
+        <div className="wv-loop-row"><span className="wv-chip wv-chip-ai">AI prepared</span><span className="wv-arrow">→</span><span className="wv-chip wv-chip-human">Human approves</span></div>
+        <div className="wv-loop-status"><i></i><b>2 items awaiting review</b></div>
+      </div>
+    },
+    {
+      type: 'custom-wf',
+      title: 'Custom Workflows',
+      description: 'Configured around your processes, controls, and approval structure.',
+      icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M17.5 17.5m-2.5 0a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0M14 10h3v4"/></svg>,
+      visual: <div className="wv-steps" aria-hidden="true"><span><b>01</b>Capture</span><i>→</i><span><b>02</b>Validate</span><i>→</i><span><b>03</b>Approve</span></div>
+    },
+    {
+      type: 'erp-agnostic',
+      title: 'ERP Agnostic',
+      description: 'Works with your existing systems. No ERP replacement required.',
+      icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="6" width="6" height="12" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/><rect x="16" y="6" width="6" height="12" rx="1"/><path d="M8 12h1M15 12h1"/></svg>,
+      visual: <div className="wv-erp" aria-hidden="true"><span>SAP</span><span>Oracle</span><b>P8</b><span>Xero</span><span>QB</span></div>
+    },
+    {
+      type: 'orchestration',
+      title: 'Proprietary AI Orchestration',
+      description: 'Our orchestration layer optimises models, rules, and human decisions.',
+      icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>,
+      visual: <div className="wv-orch" aria-hidden="true"><span className="wv-orch-ring wv-orch-ring-outer"></span><span className="wv-orch-ring wv-orch-ring-inner"></span><b>Orch.</b></div>
+    },
+    {
+      type: 'integrations',
+      title: 'Plug & Play Integrations',
+      description: 'Connect email, ERPs, portals, banks, and documents seamlessly.',
+      icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
+      visual: <div className="wv-integrations" aria-hidden="true"><span>Email</span><span>ERP</span><span>Bank</span><span>Docs</span></div>
+    }
   ]
-  const visuals = {
-    brain: <div className="brain-map" aria-hidden="true"><span>SOPs</span><span>Rules</span><b>Finance<br />Brain</b><span>Live data</span><span>Context</span></div>,
-    agents: <div className="agent-chain" aria-hidden="true"><span>Collect<small>Complete</small></span><i>→</i><span>Validate<small>Checked</small></span><i>→</i><span>Prepare<small>Ready</small></span></div>,
-    control: <div className="control-review" aria-hidden="true"><span><i>!</i><small>Material exception</small><b>Payment variance</b></span><button tabIndex="-1">Review required</button></div>,
-    process: <div className="process-steps" aria-hidden="true"><span><b>01</b>Prepare</span><span><b>02</b>Validate</span><span><b>03</b>Approve</span></div>,
-    stack: <div className="stack-links" aria-hidden="true"><span>ERP</span><span>MAIL</span><b>P8</b><span>DOCS</span><span>BANK</span></div>
-  }
+
   return <section className="why-produc8ive" id="why-produc8ive">
     <header className="why-header">
       <div><p className="why-pill">Why Produc8ive</p><h2>Built for the Work Between Your Systems</h2></div>
-      <p>Produc8ive does more than add AI to isolated tasks. It connects your processes, enterprise knowledge and existing systems to help finance teams execute work with greater control.</p>
+      <p>Six capabilities that make Produc8ive different from adding AI to isolated finance tasks.</p>
     </header>
-    <div className="why-grid">{reasons.map(([type, title, description], index) => <article className={index < 2 ? 'why-card why-card-large' : 'why-card'} key={title}><h3>{title}</h3><p>{description}</p><div className={`why-visual ${type}`}>{visuals[type]}</div></article>)}</div>
+    <div className="why-grid">
+      {reasons.map(({ type, title, description, icon, visual }, index) => (
+        <article className={`why-card${index < 2 ? ' why-card-large' : ''} why-card-${type}`} key={title}>
+          <div className="why-card-icon">{icon}</div>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <div className={`why-visual ${type}`}>{visual}</div>
+        </article>
+      ))}
+    </div>
   </section>
 }
 
 function UseCasesSection() {
   const agents = [
-    ['Bookkeeping Handoff Assistant', 'Organises client emails, statements, invoices and receipts into a clean, review-ready bookkeeping packet.'],
-    ['AP Invoice Processing Assistant', 'Extracts invoice data, checks it against purchase and approval records, and prepares validated invoices for posting.'],
-    ['Variance Analysis Assistant', 'Compares budgets and estimates against actual expenses to identify material variances and exceptions.'],
-    ['AR Collections Assistant', 'Prioritises overdue invoices and prepares contextual payment reminders for finance-team review.'],
-    ['Month-End Close Assistant', 'Tracks close activities, identifies blockers and highlights owners and next actions required for completion.'],
-    ['Investor Reporting Assistant', 'Converts financials, KPIs and cash-flow data into a structured first draft of the investor reporting pack.'],
-    ['Documentation Pre-Check Assistant', 'Reviews submission documents for missing, unclear or mismatched information before external processing.'],
-    ['Case Status Assistant', 'Consolidates updates across emails, notes and systems into a current view of status, blockers and next actions.'],
-    ['Audit-Ready Books Assistant', 'Reviews books and supporting records to flag missing evidence, inconsistencies, anomalies and unresolved items.']
+    {
+      num: '01', title: 'Bookkeeping Handoff Assistant',
+      inputs: ['Client emails', 'Bank statements', 'Invoices', 'Receipts', 'Spreadsheets'],
+      outputs: ['Clean bookkeeping packet', 'Missing item detection', 'Entity mapping', 'Transaction notes', 'Review flags'],
+      review: 'Bookkeeper approves before entry or reconciliation.'
+    },
+    {
+      num: '02', title: 'AP Invoice Processing Assistant',
+      inputs: ['Vendor invoices', 'Purchase order details', 'Approval emails', 'Due dates', 'ERP records'],
+      outputs: ['Extracted invoice data', 'Approval status', 'Exception flags', 'Posting-ready packet'],
+      review: 'Finance team approves low-confidence or exception cases.'
+    },
+    {
+      num: '03', title: 'Variance Analysis Assistant',
+      inputs: ['Management estimates', 'Approved budgets', 'Actual vendor invoices', 'Expense records'],
+      outputs: ['Budget vs. actual variance analysis', 'Under/over-budget identification', 'Exception flagging'],
+      review: 'Finance team reviews significant variances and approves corrective actions.'
+    },
+    {
+      num: '04', title: 'AR Collections Follow-Up',
+      inputs: ['Invoice aging', 'Payment history', 'Previous emails', 'Open disputes'],
+      outputs: ['Draft payment reminders', 'Invoice aging prioritization', 'Customer-specific messaging'],
+      review: 'Team edits and sends communications.'
+    },
+    {
+      num: '05', title: 'Month-End Close Tracker',
+      inputs: ['Reconciliation files', 'Open AP/AR items', 'Uncategorized transactions', 'Pending approvals'],
+      outputs: ['Daily close summary', 'Outstanding blockers', 'Assigned owners', 'Recommended next actions'],
+      review: 'Finance lead assigns owners and clears blockers.'
+    },
+    {
+      num: '06', title: 'Investor Reporting Preparation',
+      inputs: ['Monthly financials', 'KPIs', 'Budget files', 'Commentary notes', 'Cash flow data'],
+      outputs: ['Draft investor reporting package', 'Missing information', 'Financial highlights', 'Review notes'],
+      review: 'CFO or Financial Controller approves before distribution.'
+    },
+    {
+      num: '07', title: 'Documentation Pre-Check',
+      inputs: ['KYC documents', 'PAN documents', 'Entity records', 'Investor documents', 'Bank and broker requirements'],
+      outputs: ['Documentation readiness checklist', 'Missing documents', 'Mismatched information', 'Unclear documentation flags'],
+      review: 'Account manager confirms before external submission.'
+    },
+    {
+      num: '08', title: 'Case Status Tracker',
+      inputs: ['Client emails', 'Internal notes', 'Bank, broker, and vendor updates', 'Pending documents'],
+      outputs: ['Current workflow stage', 'Blockers', 'Task owner', 'Next action', 'Client update draft'],
+      review: 'Owner reviews and sends the client update.'
+    },
+    {
+      num: '09', title: 'Audit-Ready Books QA',
+      inputs: ['Accounting books', 'Financial reports', 'Supporting documents', 'Uncategorized expenses', 'Inconsistent entries'],
+      outputs: ['Missing support documentation', 'Data mismatches', 'Anomaly detection', 'Outstanding review questions'],
+      review: 'Accountant decides the final accounting treatment.'
+    }
   ]
+
   return <section className="use-cases-section" id="agents">
-    <div className="agent-scroll" aria-label="Deployable finance assistants"><div className="agent-track">{[...agents, ...agents].map(([title, description], index) => <article key={`${title}-${index}`} aria-hidden={index >= agents.length ? 'true' : undefined}><span>{String((index % agents.length) + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{description}</p></div><i aria-hidden="true">↗</i></article>)}</div></div>
-    <div className="use-cases-copy"><p className="eyebrow">Deployable assistants</p><h2>Start With One Workflow. Scale Across Finance.</h2><p className="use-cases-intro">Deploy purpose-built agents for the finance processes consuming the most time today, then expand the same Finance Brain across AP, AR, close, reporting, bookkeeping and compliance.</p><a className="button secondary" href="#contact">Setup For Me <b aria-hidden="true">↗</b></a></div>
+    <div className="agent-scroll" aria-label="Deployable finance assistants">
+      <div className="agent-track">
+        {[...agents, ...agents].map(({ num, title, inputs, outputs, review }, index) => (
+          <article key={`${num}-${index}`} aria-hidden={index >= agents.length ? 'true' : undefined}>
+            <span>{num}</span>
+            <div>
+              <h3>{title}</h3>
+              <div className="agent-io">
+                <div className="agent-io-col">
+                  <p className="agent-io-label">Input</p>
+                  <ul>{inputs.map(i => <li key={i}>{i}</li>)}</ul>
+                </div>
+                <div className="agent-io-divider" aria-hidden="true">→</div>
+                <div className="agent-io-col">
+                  <p className="agent-io-label">Output</p>
+                  <ul>{outputs.map(o => <li key={o}>{o}</li>)}</ul>
+                </div>
+              </div>
+              <p className="agent-review"><span aria-hidden="true">◎</span> Human Review — {review}</p>
+            </div>
+            <i aria-hidden="true">↗</i>
+          </article>
+        ))}
+      </div>
+    </div>
+    <div className="use-cases-copy">
+      <p className="eyebrow">Use Cases</p>
+      <h2>Real Finance Workflows Produc8ive Can Support</h2>
+      <p className="use-cases-intro">Deploy purpose-built agents for the finance processes consuming the most time today, then expand the same Finance Brain across AP, AR, close, reporting, bookkeeping and compliance.</p>
+      <a className="button primary" href="#contact">Map One Finance Workflow <b aria-hidden="true">↗</b></a>
+    </div>
   </section>
 }
 
 function FinanceBrainFlowSection() {
   const stages = [
-    ['capture', 'Input orchestration', 'Capture', 'Collects invoices, bank statements, client documents, accounting requests and other inputs from emails, files and connected systems, then structures them for processing.'],
-    ['validate', 'Control checks', 'Validate', 'Checks documents and transactions for completeness, matches records and flags missing information, mismatches, uncategorised items and incomplete reports.'],
-    ['coordinate', 'Workflow routing', 'Coordinate', 'Routes AP approvals, AR follow-ups, month-end tasks and documentation cases while tracking dependencies, owners and blockers.'],
-    ['deliver', 'Review-ready output', 'Deliver', 'Produces review-ready workpapers, reports, summaries and commentary with the relevant supporting context attached.']
+    {
+      type: 'capture',
+      label: 'Intake Assistants',
+      title: 'Intake',
+      description: 'Automate the intake of finance documents and requests.',
+      capabilities: ['Accounting Operations', 'Client Onboarding', 'AP Invoice Intake', 'Documentation-Heavy Workflows'],
+      visual: <div className="capture-workspace" aria-hidden="true">
+        <header><span>Finance intake</span><b>● Live</b></header>
+        <div className="capture-flow">
+          <div className="source-list">
+            <span><i>@</i>Email<small>6 new</small></span>
+            <span><i>▤</i>Invoices<small>8 files</small></span>
+            <span><i>▥</i>Statements<small>4 files</small></span>
+          </div>
+          <div className="flow-connector"><i></i><b>→</b></div>
+          <div className="intake-result">
+            <small>STRUCTURED INTAKE</small>
+            <strong>18 items ready</strong>
+            <span>Classified <b>18</b></span>
+            <span>Fields extracted <b>96%</b></span>
+            <em>Ready to validate</em>
+          </div>
+        </div>
+      </div>
+    },
+    {
+      type: 'validate',
+      label: 'Review Assistants',
+      title: 'Review',
+      description: 'Review finance data and documents to detect issues before processing.',
+      capabilities: ['Missing Documents', 'Mismatch Checks', 'Uncategorized Transactions', 'Incomplete Reports'],
+      visual: <div className="validation-workspace" aria-hidden="true">
+        <header><span>Document review</span><b>3 checks passed</b></header>
+        <div className="validation-panels">
+          <div className="document-preview">
+            <small>INVOICE / 1842</small>
+            <strong>Northstar Supply</strong>
+            <span>Invoice total <b>£12,480</b></span>
+            <span>PO reference <b>PO-7741</b></span>
+            <i></i><i></i>
+          </div>
+          <div className="check-list">
+            <span><i>✓</i><b>Supplier matched</b><small>Vendor master</small></span>
+            <span><i>✓</i><b>Totals checked</b><small>Within tolerance</small></span>
+            <span className="check-flag"><i>!</i><b>Approval missing</b><small>Review required</small></span>
+          </div>
+        </div>
+      </div>
+    },
+    {
+      type: 'coordinate',
+      label: 'Status Assistants',
+      title: 'Track',
+      description: 'Track the progress of finance workflows from start to completion.',
+      capabilities: ['Month-End Close', 'AP Approvals', 'AR Collections', 'Documentation Cases'],
+      visual: <div className="coordination-workspace" aria-hidden="true">
+        <header><span>Workflow status</span><b>3 owners</b></header>
+        <div className="coordination-board">
+          <span><i>✓</i><b>AP review</b><small>Finance Ops</small><em>Complete</em></span>
+          <span><i>2</i><b>Controller approval</b><small>J. Morgan</small><em>In review</em></span>
+          <span><i>3</i><b>ERP posting</b><small>System queue</small><em>Waiting</em></span>
+        </div>
+        <footer><span>Dependency tracked</span><b>No blockers</b></footer>
+      </div>
+    },
+    {
+      type: 'deliver',
+      label: 'Reporting Assistants',
+      title: 'Report',
+      description: 'Generate accurate reports, insights, and executive-ready summaries.',
+      capabilities: ['Investor Updates', 'CFO Reporting', 'KPI Summaries', 'Cash-Flow Commentary'],
+      visual: <div className="deliver-visual" aria-hidden="true">
+        <span><small>INVESTOR REPORTING PACK</small><b>Review-ready</b><i></i><i></i><i></i></span>
+        <em>Evidence attached</em>
+      </div>
+    }
   ]
-  const visuals = {
-    capture: <div className="capture-workspace" aria-hidden="true"><header><span>Finance intake</span><b>● Live</b></header><div className="capture-flow"><div className="source-list"><span><i>@</i>Email<small>6 new</small></span><span><i>▤</i>Invoices<small>8 files</small></span><span><i>▥</i>Statements<small>4 files</small></span></div><div className="flow-connector"><i></i><b>→</b></div><div className="intake-result"><small>STRUCTURED INTAKE</small><strong>18 items ready</strong><span>Classified <b>18</b></span><span>Fields extracted <b>96%</b></span><em>Ready to validate</em></div></div></div>,
-    validate: <div className="validation-workspace" aria-hidden="true"><header><span>Document validation</span><b>3 checks passed</b></header><div className="validation-panels"><div className="document-preview"><small>INVOICE / 1842</small><strong>Northstar Supply</strong><span>Invoice total <b>£12,480</b></span><span>PO reference <b>PO-7741</b></span><i></i><i></i></div><div className="check-list"><span><i>✓</i><b>Supplier matched</b><small>Vendor master</small></span><span><i>✓</i><b>Totals checked</b><small>Within tolerance</small></span><span className="check-flag"><i>!</i><b>Approval missing</b><small>Review required</small></span></div></div></div>,
-    coordinate: <div className="coordination-workspace" aria-hidden="true"><header><span>Month-end workflow</span><b>3 owners</b></header><div className="coordination-board"><span><i>✓</i><b>AP review</b><small>Finance Ops</small><em>Complete</em></span><span><i>2</i><b>Controller approval</b><small>J. Morgan</small><em>In review</em></span><span><i>3</i><b>ERP posting</b><small>System queue</small><em>Waiting</em></span></div><footer><span>Dependency tracked</span><b>No blockers</b></footer></div>,
-    deliver: <div className="deliver-visual" aria-hidden="true"><span><small>MONTH-END WORKPAPER</small><b>Review-ready</b><i></i><i></i><i></i></span><em>Evidence attached</em></div>
-  }
+
   return <section className="finance-brain-flow" id="finance-brain-flow">
-    <header><p className="flow-pill">How the Finance Brain works</p><h2>The Operating Flow Behind Every Agent</h2></header>
-    <div className="flow-timeline">{stages.map(([type, label, title, description]) => <article className="timeline-item" key={title}>
-      <div className={`flow-card-visual ${type}`}>{visuals[type]}</div>
-      <span className="timeline-node" aria-hidden="true"><i></i></span>
-      <div className="flow-card-copy"><p className="timeline-stage">{label}</p><h3>{title}</h3><p>{description}</p></div>
-    </article>)}</div>
+    <header>
+      <p className="flow-pill">A Finance Brain for Repeatable Operations</p>
+      <h2>A Finance Operations Layer That Learns,<br />Acts, and Traces.</h2>
+      <p className="flow-subhead">A finance operations layer that learns your SOPs, works across your systems, and produces traceable outputs.</p>
+    </header>
+    <div className="flow-timeline">
+      {stages.map(({ type, label, title, description, capabilities, visual }) => (
+        <article className="timeline-item" key={title}>
+          <div className={`flow-card-visual ${type}`}>{visual}</div>
+          <span className="timeline-node" aria-hidden="true"><i></i></span>
+          <div className="flow-card-copy">
+            <p className="timeline-stage">{label}</p>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <div className="flow-capabilities">
+              <p className="flow-cap-label">Key Capabilities</p>
+              <ul>{capabilities.map(c => <li key={c}>{c}</li>)}</ul>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
   </section>
 }
 
 function ImplementationJourneySection() {
-  const principles = [
-    ['Start with one workflow', 'Keep the first deployment focused, measurable and operationally useful.'],
-    ['Configure around your controls', 'Preserve existing rules, approvals and human-review requirements.'],
-    ['Validate with real cases', 'Test normal transactions, edge cases and exceptions before launch.'],
-    ['Expand after production', 'Use the first workflow as the foundation for additional finance automations.']
+  const stages = [
+    ['01', 'Discovery', 'Map your finance workflows, systems, stakeholders, and success metrics to define the implementation plan.', 'Week 1'],
+    ['02', 'Workflow Configuration', 'Configure business rules, approval workflows, validations, and process mappings tailored to your finance operations.', 'Week 1–2'],
+    ['03', 'ERP Integration', 'Securely integrate with ERP platforms such as Tally, SAP, NetSuite, Acumatica, and hundreds of other business systems.', 'Week 2'],
+    ['04', 'Data Training', 'Train AI models using your ledgers, vendors, document formats, and historical finance data within a secure testing environment.', 'Week 2–3'],
+    ['05', 'Go Live', 'Deploy automated workflows into production with continuous monitoring, alerts, and ongoing accuracy improvements.', 'Week 3–4']
   ]
   const deployment = [
-    ['complete', 'Workflow Scope', 'Complete', 'Invoice intake, validation, exception review and posting-ready output agreed.'],
-    ['complete', 'Knowledge and Rules', 'Complete', 'Vendor rules, PO checks, approval thresholds and exception logic configured.'],
-    ['complete', 'System Connections', 'Complete', 'Shared inbox, document repository and ERP test environment connected.'],
-    ['progress', 'Test Cases', '18 of 24 passed', 'Standard invoices validated. Six exception cases require review.'],
-    ['pending', 'Production Readiness', 'Pending approval', 'Finance owner sign-off required before controlled launch.']
+    ['complete', 'Discovery', 'Week 1 · Complete', 'Workflows, systems, stakeholders, and success metrics mapped.'],
+    ['complete', 'Workflow Configuration', 'Week 1–2 · Complete', 'Business rules, approvals, and process mappings configured.'],
+    ['complete', 'ERP Integration', 'Week 2 · Complete', 'Tally, SAP, and document repository connected securely.'],
+    ['progress', 'Data Training', 'Week 2–3 · In progress', 'AI models training on ledgers, vendors, and historical data.'],
+    ['pending', 'Go Live', 'Week 3–4 · Pending', 'Production deployment pending final sign-off and monitoring setup.']
   ]
   return <section className="implementation-journey" id="implementation-journey">
     <div className="implementation-copy">
-      <p className="implementation-pill">Implementation journey</p>
-      <h2>From Workflow Discovery to Production in a Few Weeks</h2>
-      <p className="implementation-intro">Start with one clearly defined finance workflow. We map how it operates, configure Produc8ive around your controls, connect the required systems and validate it with real cases before production launch.</p>
-      <div className="implementation-principles">{principles.map(([title, description]) => <article key={title}><i aria-hidden="true">✓</i><div><h3>{title}</h3><p>{description}</p></div></article>)}</div>
+      <p className="implementation-pill">Implementation Journey</p>
+      <h2>From Kickoff to Autonomy in Weeks</h2>
+      <p className="implementation-intro">A guided, five-stage implementation that connects Produc8ive to your ERP, learns your finance processes, and delivers a review-ready workflow—without replacing your existing systems.</p>
+      <div className="implementation-principles">
+        {stages.map(([num, title, description, timeline]) => (
+          <article key={num}>
+            <i aria-hidden="true">{num}</i>
+            <div>
+              <h3>{title} <span className="impl-timeline">{timeline}</span></h3>
+              <p>{description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
     <div className="deployment-stage">
       <div className="deployment-workspace">
-        <header><div><small>FINANCE AUTOMATION / DEPLOYMENT</small><h3>AP Invoice Processing Deployment</h3></div><span>Validation in progress</span></header>
-        <div className="deployment-checklist">{deployment.map(([state, title, status, description]) => <article className={state} key={title}><i aria-hidden="true">{state === 'complete' ? '✓' : state === 'progress' ? '◒' : '·'}</i><div><h4>{title}</h4><p>{description}</p></div><b>{status}</b></article>)}</div>
-        <footer><div className="readiness-copy"><span>Launch readiness</span><strong>82%</strong><i><b></b></i></div><button type="button">Review Open Exceptions <span aria-hidden="true">→</span></button></footer>
+        <header>
+          <div><small>IMPLEMENTATION PROGRESS</small><h3>Produc8ive Deployment</h3></div>
+          <span>In progress</span>
+        </header>
+        <div className="deployment-checklist">
+          {deployment.map(([state, title, status, description]) => (
+            <article className={state} key={title}>
+              <i aria-hidden="true">{state === 'complete' ? '✓' : state === 'progress' ? '◒' : '·'}</i>
+              <div><h4>{title}</h4><p>{description}</p></div>
+              <b>{status}</b>
+            </article>
+          ))}
+        </div>
+        <footer>
+          <div className="readiness-copy">
+            <span>Overall progress</span>
+            <strong>60%</strong>
+            <i><b style={{width:'60%'}}></b></i>
+          </div>
+          <button type="button">View Deployment Plan <span aria-hidden="true">→</span></button>
+        </footer>
       </div>
-      <div className="deployment-support" aria-label="Implementation configuration summary"><article><small>Human Review Gates</small><strong>3 approvals configured</strong></article><article><small>Systems Connected</small><strong>Email · ERP · Shared Drive</strong></article><article><small>Test Coverage</small><strong>Normal · Exception · Failure cases</strong></article></div>
+      <div className="deployment-support" aria-label="Implementation summary">
+        <article><small>Typical Timeline</small><strong>3–4 Weeks</strong></article>
+        <article><small>Implementation Stages</small><strong>5 Guided Steps</strong></article>
+        <article><small>Support</small><strong>Dedicated Customer Success Partner</strong></article>
+      </div>
+    </div>
+  </section>
+}
+
+function WorkflowDemoSection() {
+  const steps = [
+    ['01', 'Invoice In',    'Vendor invoices received through email or a shared document repository.'],
+    ['02', 'Extract',       'Automatically extract vendor info, invoice number, line items, amounts, taxes, and due dates.'],
+    ['03', 'Check',         'Validate purchase orders, approval status, required fields, and flag missing or inconsistent data.'],
+    ['04', 'Route',         'Low-confidence invoices and exceptions routed to the appropriate finance reviewer.'],
+    ['05', 'Post-Ready',    'Prepare a validated, approval-ready invoice package for seamless ERP posting.'],
+    ['06', 'Audit Log',     'Record every action, review, approval, and change for a complete audit trail.']
+  ]
+  return <section className="workflow-demo" id="workflow-demo">
+    <header className="workflow-demo-header">
+      <p className="eyebrow light">See It in Action</p>
+      <h2>One Workflow, Fully Mapped —<br /><em>AP Invoice Processing</em></h2>
+      <p className="workflow-demo-lead">Follow a complete Accounts Payable workflow from invoice receipt to ERP-ready posting, with AI automating repetitive tasks while keeping humans in control of critical decisions.</p>
+    </header>
+
+    <div className="workflow-steps">
+      {steps.map(([num, title, desc], i) => (
+        <div className="workflow-step" key={num} style={{'--step-index': i}}>
+          <div className="workflow-step-card">
+            <span className="workflow-step-num">{num}</span>
+            <h3>{title}</h3>
+            <p>{desc}</p>
+          </div>
+          {i < steps.length - 1 && (
+            <div className="workflow-step-connector" aria-hidden="true">
+              <span className="wf-connector-dot"></span>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <div className="workflow-result">
+      <span className="workflow-result-icon" aria-hidden="true">✓</span>
+      <div>
+        <p className="workflow-result-label">Result</p>
+        <p className="workflow-result-text">AP work reaches the finance team cleaner, faster, and with fewer hidden gaps.</p>
+      </div>
+      <a className="button inverse" href="#contact">Map Your Workflow <b aria-hidden="true">↗</b></a>
+    </div>
+  </section>
+}
+
+
+function IntegrationsSection() {
+  const erps = [
+    {
+      name: 'Tally',
+      sub: 'Power of Simplicity',
+      logo: <span className="erp-logo-tally"><em>Tally</em><small>Power of Simplicity</small></span>
+    },
+    {
+      name: 'SAP',
+      sub: null,
+      logo: <span className="erp-logo-sap">SAP</span>
+    },
+    {
+      name: 'Oracle NetSuite',
+      sub: 'NetSuite',
+      logo: <span className="erp-logo-oracle"><em>ORACLE</em><small>NetSuite</small></span>
+    },
+    {
+      name: 'Acumatica',
+      sub: 'The Cloud ERP',
+      logo: <span className="erp-logo-acumatica"><b>◆</b> Acumatica<small>The Cloud ERP</small></span>
+    }
+  ]
+  return <section className="integrations-section" id="integrations">
+    <header className="integrations-header">
+      <p className="eyebrow">Integrations</p>
+      <h2>Connects to Your <em>Existing Stack</em></h2>
+    </header>
+    <div className="integrations-logos" aria-label="Supported ERP platforms">
+      {erps.map(({ name, logo }) => (
+        <div className="integrations-logo-cell" key={name}>
+          {logo}
+        </div>
+      ))}
+    </div>
+    <p className="integrations-note">Works with your existing ERP. Custom integrations available. No replacement required.</p>
+  </section>
+}
+
+
+function HonestScopeSection() {
+  const prepares = ['Document Checks', 'Review Packets', 'Audit Packs', 'Reporting Drafts', 'Follow-up Drafts', 'Status Tracking']
+  const decides  = ['Accounting', 'Tax Positions', 'Payments', 'Compliance', 'Investments', 'Final Approval']
+
+  return <section className="honest-scope" id="honest-scope">
+    <div className="honest-scope-inner">
+
+      {/* Left — header copy */}
+      <div className="honest-scope-copy">
+        <p className="eyebrow">Honest Scope</p>
+        <h2>What Produc8ive<br />Does Not Do</h2>
+        <p className="honest-scope-body">Produc8ive does not replace finance judgment. It does not make final accounting, tax, compliance, banking, or investment decisions.</p>
+        <p className="honest-scope-statement">Produc8ive prepares.<br />Your team decides.</p>
+      </div>
+
+      {/* Right — comparison */}
+      <div className="honest-scope-compare">
+        <div className="honest-col honest-col-prepares">
+          <div className="honest-col-header">
+            <span className="honest-col-tag honest-tag-ai">AI</span>
+            <p className="honest-col-title">Produc8ive Prepares</p>
+          </div>
+          <ul>{prepares.map((item, i) => (
+            <li key={item}><span className="honest-item-num">{String(i+1).padStart(2,'0')}</span>{item}</li>
+          ))}</ul>
+        </div>
+        <div className="honest-col honest-col-decides">
+          <div className="honest-col-header">
+            <span className="honest-col-tag honest-tag-human">Human</span>
+            <p className="honest-col-title">Finance Decides</p>
+          </div>
+          <ul>{decides.map((item, i) => (
+            <li key={item}><span className="honest-item-num">{String(i+1).padStart(2,'0')}</span>{item}</li>
+          ))}</ul>
+        </div>
+      </div>
+
+    </div>
+
+    {/* Guiding principle strip */}
+    <div className="honest-principle">
+      <span className="honest-principle-label">Guiding Principle</span>
+      <p>Every finance decision remains under your team's control.</p>
+    </div>
+  </section>
+}
+
+function LeadershipSection() {
+  const team = [
+    {
+      name: 'Ameya Kunte',
+      role: 'Co-founder & Experienced Finance Professional',
+      img: '/ameya.jpg',
+      bio: 'Ameya Kunte is a Chartered Accountant, tax expert, and entrepreneur with over two decades of experience in restructuring advisory, corporate tax, and M&A. He is the Founder of Globeview Advisors LLP, a boutique consulting firm delivering tax-centric business advisory services to leading businesses and promoters. Previously with Ernst & Young and PwC, Ameya also co-founded Taxsutra, India\'s premier B2B tax news platform.',
+      linkedin: '#'
+    },
+    {
+      name: 'Saurav Mishra',
+      role: 'Co-Founder & AI Advocate',
+      img: '/Saurav.jpg',
+      bio: 'Saurav is a growth strategist and entrepreneur who enables T-Shaped Growth for businesses by combining deep expertise in marketing and sales with a broad understanding of HR, finance, operations, and supply chains. He helps organizations deploy AI-driven automation and scalable growth playbooks. Previously, he founded and scaled a 300+ member technology company, later acquired by a New York private equity firm.',
+      linkedin: '#'
+    },
+    {
+      name: 'Sawan Jain',
+      role: 'Co-Founder & Tech Arch',
+      img: '/sawan.jpg',
+      bio: 'Sawan is the Co-founder of Varseno with over 20 years of experience in enterprise software strategy, design, and delivery. He is passionate about solving complex problems through innovative and scalable technology solutions. Known for his pragmatic leadership style, Sawan brings together strategy, creativity, and execution to build high-performing teams and deliver meaningful business impact.',
+      linkedin: '#'
+    },
+    {
+      name: 'Akash Hande',
+      role: 'Co-Founder & Product',
+      img: '/akash.jpg',
+      bio: 'Akash Hande is the Co-founder and Product Manager at Produc8ive, where he drives the vision and execution of AI-powered products. With a strong focus on blending technology, automation, and business strategy, Akash specializes in building scalable solutions for finance, e-commerce, and sport domain. He thrives on turning complex workflows into simple, outcome-driven products.',
+      linkedin: '#'
+    }
+  ]
+
+  return <section className="leadership-section" id="leadership">
+    <header className="leadership-header">
+      <p className="eyebrow">Leadership Team</p>
+      <h2>The People Behind Produc8ive</h2>
+    </header>
+    <div className="leadership-grid">
+      {team.map(({ name, role, img, bio, linkedin }) => (
+        <article className="leader-card" key={name}>
+          <div className="leader-img-wrap">
+            <img src={img} alt={name} className="leader-img" />
+          </div>
+          <div className="leader-body">
+            <div className="leader-meta">
+              <div>
+                <h3 className="leader-name">{name}</h3>
+                <p className="leader-role">{role}</p>
+              </div>
+              <a
+                href={linkedin}
+                className="leader-linkedin"
+                aria-label={`${name} on LinkedIn`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                LinkedIn Profile
+              </a>
+            </div>
+            <p className="leader-bio">{bio}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+}
+
+function TrustedBySection() {
+  const logos = [
+    { name: 'Suma', src: '/Suma-Logo-BlackText (1).svg' },
+    { name: 'Serum', src: '/serum-logo.png' },
+    { name: 'Kale', src: '/Kale-New-Logofo.png' },
+    { name: 'Globeview', src: '/globalview.png' }
+  ]
+  return <section className="trusted-by" id="trusted-by">
+    <div className="trusted-by-header">
+      <p className="eyebrow">Our Clients</p>
+      <h2>Trusted by Finance Teams</h2>
+    </div>
+    <div className="trusted-logos">
+      {logos.map(({ name, src }) => (
+        <div className="trusted-logo-cell" key={name}>
+          <img src={src} alt={name} className="trusted-logo-img" />
+        </div>
+      ))}
+    </div>
+  </section>
+}
+
+function FinalCtaSection() {
+  const workflows = [
+    'Accounting Preparation', 'AP Invoice Processing', 'Month-End Close Tracking',
+    'Investor Reporting', 'AR Follow-ups', 'Documentation Pre-checks'
+  ]
+  return <section className="final-cta" id="start-here">
+    <div className="final-cta-inner">
+      <p className="eyebrow light">Start Here</p>
+      <h2>Start With One<br />Finance Workflow</h2>
+      <div className="final-cta-workflows" aria-label="Example workflows">
+        {workflows.map((w, i) => (
+          <span key={w}>{w}{i < workflows.length - 1 && <i aria-hidden="true"> · </i>}</span>
+        ))}
+      </div>
+      <p className="final-cta-body">We map the workflow, build the first AI assistant, demonstrate the results, and then scale.</p>
+      <a className="button inverse" href="#contact">Map One Workflow <b aria-hidden="true">↗</b></a>
+    </div>
+  </section>
+}
+
+function FaqSection() {
+  const faqs = [
+    { q: 'Is this replacing our finance team?', a: 'No. It removes repetitive prep, classification, follow-up and tracking work. Final review stays with your team.' },
+    { q: 'Which workflow should we start with?', a: 'Start where the pain is most visible: AP invoice processing, bookkeeping operations, month-end close, documentation checks or AR follow-ups.' },
+    { q: 'Do we need to change our ERP or finance stack?', a: 'No. The first workflow can sit around your current email, documents, spreadsheets, ERP exports and operating process.' },
+    { q: 'Can it handle sensitive finance workflows?', a: 'It supports document checks, summaries, missing-item detection, status tracking and audit packs. Final judgment stays human.' },
+    { q: 'What does the first pilot produce?', a: 'A mapped workflow, sample input structure, output checklist, and one working assistant for a selected use case.' },
+    { q: 'Can it work across multiple finance processes?', a: 'Yes, but not on day one. Start with one workflow. Expand after the first workflow proves useful.' }
+  ]
+  return <section className="faq-section" id="faq">
+    <div className="faq-inner">
+      <header className="faq-header">
+        <p className="eyebrow">FAQ</p>
+        <h2>Common Questions</h2>
+      </header>
+      <div className="faq-list accordion">
+        {faqs.map(({ q, a }) => (
+          <details key={q}>
+            <summary>{q}<b aria-hidden="true">+</b></summary>
+            <p>{a}</p>
+          </details>
+        ))}
+      </div>
     </div>
   </section>
 }
