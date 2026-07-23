@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Produc8ive</title>
+    <script>
+      // GitHub Pages SPA redirect trick
+      // Stores the path in sessionStorage and redirects to root
+      var path = window.location.pathname;
+      var base = '/produc8ive-updated';
+      var route = path.replace(base, '') || '/';
+      sessionStorage.setItem('spa_redirect', route);
+      window.location.replace(base + '/');
+    </script>
+  </head>
+  <body></body>
+</html>

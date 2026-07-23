@@ -8,7 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/produc8ive-updated/assets/index-bi9DmYi1.js"></script>
+    <script>
+      // Restore route after GitHub Pages 404 redirect
+      var redirect = sessionStorage.getItem('spa_redirect');
+      if (redirect) {
+        sessionStorage.removeItem('spa_redirect');
+        var base = '/produc8ive-updated';
+        window.history.replaceState(null, '', base + redirect);
+      }
+    </script>
+    <script type="module" crossorigin src="/produc8ive-updated/assets/index-BfsiJIa_.js"></script>
     <link rel="stylesheet" crossorigin href="/produc8ive-updated/assets/index-DOBBCPxj.css">
   </head>
   <body>
