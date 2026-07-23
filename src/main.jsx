@@ -2,17 +2,22 @@ import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import FloatingLines from './FloatingLines'
 import dashboardImage from '../DIY dashboard.PNG'
-import logo from '../public/logo.png'
-import placeholder from '../public/agent-workspace-placeholder.svg'
-import ameyaImage from '../public/ameya.jpg'
-import sauravImage from '../public/Saurav.jpg'
-import sawanImage from '../public/sawan.jpg'
-import akashImage from '../public/akash.jpg'
-import sumaLogo from '../public/Suma-Logo-BlackText (1).svg'
-import serumLogo from '../public/serum-logo.png'
-import kaleLogo from '../public/Kale-New-Logofo.png'
-import globeviewLogo from '../public/globalview.png'
+import logo from './assets/logo.png'
+import placeholder from './assets/agent-workspace-placeholder.svg'
+import ameyaImage from './assets/ameya.jpg'
+import sauravImage from './assets/Saurav.jpg'
+import sawanImage from './assets/sawan.jpg'
+import akashImage from './assets/akash.jpg'
+import sumaLogo from './assets/Suma-Logo-BlackText (1).svg'
+import serumLogo from './assets/serum-logo.png'
+import kaleLogo from './assets/Kale-New-Logofo.png'
+import globeviewLogo from './assets/globalview.png'
 import './styles.css'
+
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '')
+function stripBase(pathname) {
+  return pathname.startsWith(BASE) ? pathname.slice(BASE.length) || '/' : pathname
+}
 
 const routes = [
   ['/brand', 'Overview'], ['/logo', 'Logo'], ['/colors', 'Colors'],
@@ -39,7 +44,8 @@ const defaultHero = {
 }
 
 function Link({ to, children, className = '' }) {
-  return <a className={className} href={to} onClick={e => { e.preventDefault(); history.pushState({}, '', to); dispatchEvent(new PopStateEvent('popstate')); window.scrollTo(0, 0) }}>{children}</a>
+  const fullPath = BASE + to
+  return <a className={className} href={fullPath} onClick={e => { e.preventDefault(); history.pushState({}, '', fullPath); dispatchEvent(new PopStateEvent('popstate')); window.scrollTo(0, 0) }}>{children}</a>
 }
 
 function Copy({ value, label = 'Copy' }) {
@@ -1040,10 +1046,10 @@ function FloatingNavbar() {
 
 const pages = {'/brand': Overview, '/logo': Logo, '/colors': Colors, '/typography': Typography, '/actions': Actions, '/surfaces': Surfaces, '/patterns': Patterns, '/tokens': Tokens, '/components': SectionLibrary}
 function App() {
-  const [path, setPath] = useState(location.pathname)
-  useEffect(() => { const update = () => setPath(location.pathname); addEventListener('popstate', update); return () => removeEventListener('popstate', update) }, [])
- if (path === "/") return <HomeHero />;
-if (path === "/landing-page-1") return <LandingPageOne />;
+  const [path, setPath] = useState(() => stripBase(location.pathname))
+  useEffect(() => { const update = () => setPath(stripBase(location.pathname)); addEventListener('popstate', update); return () => removeEventListener('popstate', update) }, [])
+  if (path === '/') return <HomeHero />
+  if (path === '/landing-page-1') return <LandingPageOne />
   const Page = pages[path] || Overview
   return <Shell path={pages[path] ? path : '/brand'}><Page /></Shell>
 }
